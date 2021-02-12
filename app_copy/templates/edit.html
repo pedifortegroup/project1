@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit {{note.title}}</title>
+
+    <link rel="stylesheet" href="{{url_for('static',filename='css/blog.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <!--start of fontawesome-->
+    <link type="text/css" rel="stylesheet" href="{{url_for('static',  filename='fontawesome/css/all.min.css')}}"/>
+    <link type="text/css" rel="stylesheet" href="{{url_for('static',filename='fontawesome/css/v4-shims.min.css')}}" />
+    <!-- end fontawesome -->
+    <!--start of bootstrap-->
+    <link rel="stylesheet" href="{{url_for('static',filename='bootstrap-5/dist/css/bootstrap.min.css')}}">
+    <!--end of bootstrap-->
+    <style>
+        .bd-placeholder-img {
+          font-size: 1.125rem;
+          text-anchor: middle;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          user-select: none;
+        }
+  
+        @media (min-width: 768px) {
+          .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+          }
+        }
+      </style>
+
+</head>
+<body>
+
+<div class="container">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <b class="text-success">{{message}}</b>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <div class="new-note">
+        <h4 class="text-center">Edit {{note.title}}</h4>
+        <form name="note-form" action="/notes/update/{{note.id}}" method="post">
+            <div class="form-group">
+                <input class="form-control" name="title" placeholder="Note Title" value="{{note.title}}">
+            </div>
+
+            <div class="form-group">
+                <textarea name="content" class="form-control" placeholder="Enter content">
+                    {{note.content}}
+                </textarea>
+            </div>
+
+            <div class="text-right">
+                <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> UPDATE</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/blog.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <!--start of fontawesome-->
+    <link type="text/css" rel="stylesheet" href="{{url_for('static',  filename='fontawesome/css/all.min.css')}}"/>
+    <link type="text/css" rel="stylesheet" href="{{url_for('static',filename='fontawesome/css/v4-shims.min.css')}}" />
+    <!-- end fontawesome -->
+    <!--start of bootstrap-->
+    <link rel="stylesheet" href="{{url_for('static',filename='bootstrap-5/dist/css/bootstrap.min.css')}}">
+    <!--end of bootstrap-->
+    <style>
+        .bd-placeholder-img {
+          font-size: 1.125rem;
+          text-anchor: middle;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          user-select: none;
+        }
+  
+        @media (min-width: 768px) {
+          .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+          }
+        }
+      </style>
+</head>
+<body>
+
+<div class="container" style="margin: 30px 0 0 30px">
+    <div class="center-div login-box">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <b class="text-danger">{{message}}</b>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <div >
+            <i class="fa fa-edit fa-2x"></i>
+            <h4> <span class="g-font">FBA BLOG</span>
+            <br/> <small>Create Account</small>
+            </h4>
+        </div>
+        <form method="post" action="http://localhost:5000/signup">
+            <div class="form-group">
+                <input type="text" class="form-control" name="name" placeholder="Name">
+            </div>
+            <div class="form-group">
+                <input class="form-control" name="email" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <input type="text" name="phone" class="form-control" placeholder="Phone Number">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="office_address" placeholder="OFFICE ADDRESS">
+            </div>
+            <div class="form-group">
+                <input type="number" name="age" class="form-control" placeholder="Age">
+            </div>
+            <div class="form-group">
+            <div class="form-group">
+                <input class="form-control" type="text" name="occupation" placeholder="Occupation">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="home_address" placeholder="Home address">
+            </div>
+            <div class="form-group">
+                <select name="gender" class="form-control" name="gender">
+                    <option value="female">Female</option>
+                    <option value="male">Male</option>
+                    <option value="undisclosed">Rather not say</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <input class="form-control" type="password" name="password" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="password" name="password2" placeholder=" Confirm Password">
+            </div>
+            <div class="pull-right">
+                <button class="btn btn-primary" id="log">Sign Up</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="{{url_for('static', filename='js/jquery3.min.js')}}"></script>
+</body>
+</html>

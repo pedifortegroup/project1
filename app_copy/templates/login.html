@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flask Practice</title>
+
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- end Bootstrap CSS -->
+    <!-- Fontawesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- end fontawesome -->
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Modak&display=swap" rel="stylesheet">
+    <!-- end Google font -->
+    <link rel="stylesheet"
+          href="{{url_for('static', filename='css/style.css')}}"
+    >
+    <link rel="stylesheet" href="{{url_for('static',filename='css/blog.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <!--start of fontawesome-->
+    <link type="text/css" rel="stylesheet" href="{{url_for('static',  filename='fontawesome/css/all.min.css')}}"/>
+    <link type="text/css" rel="stylesheet" href="{{url_for('static',filename='fontawesome/css/v4-shims.min.css')}}" />
+    <!-- end fontawesome -->
+    <!--start of bootstrap-->
+    <link rel="stylesheet" href="{{url_for('static',filename='bootstrap-5/dist/css/bootstrap.min.css')}}">
+    <!--end of bootstrap-->
+    <style>
+        .bd-placeholder-img {
+          font-size: 1.125rem;
+          text-anchor: middle;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          user-select: none;
+        }
+  
+        @media (min-width: 768px) {
+          .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+          }
+        }
+      </style>
+</head>
+<body>
+<div class="container">
+    <div class="center-div login-box">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <b class="text-danger">{{message}}</b>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <div class="text-center" style="margin-top: 2%;margin-bottom: 2%;">
+            <img src="{{url_for('static',filename='img/Asset-1.png')}}" alt="" class="img">
+            <h4> <span class="g-font" style="margin-bottom: 2%;">FBA BLOG</span>
+            <br/> <small>Login To Your Account</small>
+            </h4>
+        </div>
+        <form method="post" action="/login">
+            <div class="form-group">
+                <input class="form-control" name="email" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="password" name="password" placeholder="Password">
+            </div>
+            <div class="">
+                <button class="btn btn-primary" id="log">LOGIN</button>
+            </div>
+        </form>
+        <p style="margin-top: 20px">
+            <a href="/sign-up">Not a member? Sign Up</a>
+        </p>
+    </div>
+</div>
+<script src="{{url_for('static', filename='js/jquery3.min.js')}}"></script>
+</body>
+</html>
